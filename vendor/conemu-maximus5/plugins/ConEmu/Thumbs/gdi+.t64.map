@@ -1,6 +1,6 @@
  gdi+
 
- Timestamp is 53bc6333 (Wed Jul 09 01:31:31 2014)
+ Timestamp is 54861adb (Tue Dec 09 00:40:43 2014)
 
  Preferred load address is 0000000180000000
 
@@ -20,7 +20,7 @@
  0002:00000000 00000088H .bss                    DATA
  0003:00000000 000001e0H .pdata                  DATA
  0004:00000000 00000058H .rsrc$01                DATA
- 0004:00000060 00000270H .rsrc$02                DATA
+ 0004:00000060 000002b8H .rsrc$02                DATA
 
   Address         Publics by Value              Rva+Base               Lib:Object
 

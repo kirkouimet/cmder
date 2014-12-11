@@ -5,12 +5,591 @@ SVN: http://conemu-maximus5.googlecode.com/svn/trunk/ConEmu/Release/ConEmu/Whats
 
 
 You can show your appreciation and support future development by donating.
-Donate (PayPal) button located on project website under ConEmu sketch (upper right of page)
+Donate button located on project website under ConEmu sketch (upper right of page)
 http://code.google.com/p/conemu-maximus5
 
 Votes and awards (vote for ConEmu, if you please)
 http://code.google.com/p/conemu-maximus5/wiki/Awards
 
+
+2014.12.8
+[*] Issue 980: Far Manager was not resized properly after exiting NTVDM application.
+[*] Status [Disabled] was not shown for ‘Delete word leftward to the cursor’ hotkey.
+[*] While selection is present - force RClick to copy/paste internally if ‘Intelligent mode’ is on.
+[*] Add status bar columns for VCon window sizes in pixels.
+
+
+2014.12.6
+[*] Issue 980: Fix resize issues with NTVDM (old DOS) applications.
+[*] Some more internal logging.
+
+
+2014.12.4
+[*] Issue 1832: Some file size zeros was missed in Far's Tiles mode.
+[*] Update counters FPS/RPS calculation.
+[*] Add to counters keyboard performance (delay between keypress and console reaction).
+
+
+2014.12.3
+[*] Powershell's "get-help Get-ChildItem -full | out-host -paging" did not react to Space/Enter.
+[*] LogFiles: Log ‘IsAdmin’ state and ServerPID changes.
+[*] Fix Coverity warnings (from Michael Lukashov).
+
+
+2014.12.1
+[*] In some cases using ‘Cmd_Autorun’ was causing crashes.
+[*] Far active directory was not refresed in Tab labels if macro ‘%d’ was used in template.
+[*] Use simple "ConEmuC -IsConEmu" instead of "ConEmuC -GuiMacro IsConEmu" in ‘Cmd_Autorun’.
+[*] Was not warned about wrong place (invalid switch) of "-new_console:a" with ConEmu.exe.
+[*] Issue 1828: ‘Cmd_Autorun’ fails if processes were started under different credentials.
+[*] Command was forced into new ConEmu tab even if `-new_console` was quoted with non-double-quotes.
+
+
+2014.11.30
+[*] Redesign ‘Features’ settings page.
+[*] Sleep in background: don't force inactive tabs to high activity state on startup.
+[*] More server-side logging of ‘sleep in background’.
+[*] Fix multiple [Sleep]-s appeared in tabs (ConEmuSleepIndicator=TITLE).
+[*] In some cases wrong installer bitness was used with autoupdate.
+    If ConEmu.exe was started but both x86 and x64 versions were installed.
+[*] Issue 1812: Bypass Windows 10 bug with GetConsoleDisplayMode.
+[*] Changes in the setting ‘tab flash count’ field were ignored.
+[*] Issue 1826: Changes of the checkbox ‘Aggressive mode’ were ignored.
+[*] Let inform user about unhandles checkbox clicks.
+[*] Don't leave flashed tab in highlighted state by default.
+    If one need to leave it highlighted set flash counter to ODD value.
+[*] InactiveFlash: Running Far ignore top visible line (with clock).
+[*] InactiveFlash: Don't flash while Far is doing something with progress.
+[*] InactiveFlash: Support flashing for Far viewers also.
+[*] InactiveFlash: Use tab suffix instead of separate template.
+[*] Issue 1825: Don't try to force Macro execution.
+
+
+2014.11.26
+[*] Issue 1590, Issue 1793: Slow input response in some cases (after startup or tab switching).
+[*] Some controls on the ‘Features’ page were overlapped.
+
+
+2014.11.25
+[*] Issue 1821: Don't force "start /min ..." to be new ConEmu tab.
+[*] Issue 1822: Option to disable forcing "start" to be new ConEmu tab.
+[*] Don't block row/col highlight updating if mouse is inside VCon even if ConEmu is not a foreground window.
+[*] Let switch and update row/col highlight simultaneously for all panes in group.
+[*] Don't flash tab created in background.
+[*] Don't flash just deactivated tab.
+[*] Shorten color scheme name <Default Windows scheme>.
+[*] Move ‘Schemes’ drop down to the top of ‘Colors’ settings page.
+[*] Redesign ‘Fast configuration’ dialog.
+
+
+2014.11.23
+[*] Add <Base16> color scheme.
+[*] LogFiles: Log Far plugin PID changes.
+[*] LogFiles: Log Far macro execution.
+[*] Show in the window title ‘{%%}’ if the progress was set to indeterminated state.
+[*] Remove lag switching to inactive cmd's tab after window resize.
+[*] Apps+G must group input only active panes.
+[*] Issue 1161: Maximize/restore active pane. Apps+Enter, GuiMacro Split(3), optional DblClick on tab.
+[*] Try to force set CF_LOCALE (optional setting "CTS.ForceLocale") while copying.
+[*] Make GitShowBranch.cmd multi-process aware.
+[*] Make close confirmation texts clearer.
+[*] Win+Ctrl+Del closes active group.
+[*] Issue 1807: Allow GuiMacro execution in specified tab or split.
+    ConEmuC /GUIMACRO[:PID|HWND][:T<tab>][:S<split>] <GuiMacro command>
+    <tab> is 1-based tab index
+    <split> is 1-based pane index of selected/active group of panes
+[*] Issue 1819: ConEmu broke cygwin's pipeline in some rare cases.
+[*] Issue 1809: Inactive (invisible) tab flash on activity.
+    Setting "TabFlashChanged". 0 - disabled, >0 - infinite, ODD - leave highlighted, EVEN - turn off after flashing.
+    Setting "TabModified" set template for those modified tabs.
+    Both settings are available on ‘Tabs’ settings page.
+[*] Use keyboard hooks to process ‘Switch focus between ConEmu and ChildGui’.
+[*] Use Win+Z (by default) for ‘Switch focus between ConEmu and ChildGui’.
+[*] Was not able to set focus into ConEmu after CtrlWinAltSpace with ChildGui.
+
+
+2014.11.17
+[*] Default color scheme set back to <Solarized>.
+    To get git's proper colored output for <Solarized> scheme run:
+    git config --global color.diff.new "green bold"
+[*] Extend fonts listboxes were not enabled properly.
+[*] Esc was not working in the ‘Commands’ field on the ‘Tasks’ settings page.
+[*] Apply button on ‘Size & Pos’ page was not working, size fields were rolled back after ‘Apply’ was pressed.
+[*] Command "start cmd" from ConEmu tab must start new tab.
+[*] Issue 653: New ConEmu.exe switches: -Wnd{X|Y|W|H} <Value>.
+    This will force ConEmu window to position/size.
+    Size supports cells (-WndW 80), percents (-WndW 50%) and pixels (-WndW 100px).
+[*] Issue 1815: ConEmu panel view plugin does not despect AppDistinct palette overrides.
+
+
+2014.11.16
+[*] Issue 1812: Vertical scroll bar disappeared in latest Win10 build.
+[*] Use modified <SolarMe> palette by default (for new configs).
+[*] Show error box if Server and GUI has wrong protocol versions. Log errors also.
+[*] LogFiles: Add root shell's start/exit logging.
+[*] LogFiles: Log ‘CMD's AutoRuns’ strings from registry.
+[*] LogFiles: Log Prompt/HookServer starts.
+[*] Show actual 4-bit colors in the ExtendedConsole color selection dialog.
+
+
+2014.11.15
+[*] Show asterisk insted of minus in the ‘Visible region lock’ StatusBar column.
+[*] AutoUpdate: Postpone was not working.
+[*] AutoUpdate: Don't show spare close confirmation after ‘Close & Update’ confirmation.
+[*] More logging of console buffer changes.
+
+
+2014.11.14
+[*] Scroll position was ignored when starting selection with ‘Freeze console...’ enabled option.
+[*] Don't reset scroll position on KeyUp, only KeyDown are taken into account.
+[*] New switch "-cur_console:R" to force start of hooks server in the parent process.
+[*] AnsiEscapeCodes: Color change was ignored specified before ‘$E]9;8;"env"$E’.
+[*] Add "CmdInit.cmd" to "%ConEmuBaseDir%". Set up pretty cmd prompt with optional git info.
+[*] GitShowBranch: Take into account PROMPT settings was set in the "CmdInit.cmd".
+[*] Redesign About dialog (tabs on the right).
+[*] Add ‘SysInfo’ page to the About dialog.
+[*] Issue 1799: Log clipboard operations.
+[*] Fix dialog flickering while dragging to monitor with another dpi value.
+
+
+2014.11.13
+[*] Issue 1745: Fix overscaled dialogs.
+
+
+2014.11.12
+[*] Issue 1789: Far Thumbnails - current item was not changed if QSearch was active (Far 3 api break). Patch works with Far3bis 4188+ only.
+[*] Far Thumbnails - fix arrow move if QSearch is active.
+[*] Force using "%ConEmuDrive%" instead of "%SystemDrive%" when populating default tasks.
+
+
+2014.11.11
+[*] Group keyboard input for visible splits: Apps+G.
+[*] Issue 1803: Unable to check quake-style setting ‘Auto-hide on focus lost’.
+[*] Fix Coverity warnings (from Michael Lukashov).
+[*] Fix broken theme on search control after quake activation.
+[*] FileLineDetector: Fix broken "abc.py (1): ..."
+[*] FileLineDetector: Fix broken mail detection, support stop on punctuations.
+
+
+2014.11.10
+[*] Issue 1802: GuiMacro: Add ‘Pause’ ability. When you press ‘Pause’ RCon is forced into
+    ‘internal selection’ state which cause pausing of most console writing applications.
+[*] StatusBar text color was broken after ‘Visible region lock’.
+[*] Old ‘PicViewSlide’ hotkeys were removed.
+[*] Donate link was changed.
+[*] FileLineDetector: Fix broken "file.cpp(123) : error...".
+[*] FileLineDetector: Support quotation trimming.
+[*] Fix warnings and typos (from Michael Lukashov).
+
+
+2014.11.09
+[*] Issue 1801: FileLineDetector: In addition to a/ b/ support i/ c/ w/ o/ also.
+[*] Move StatusBar's ‘Visible region lock’ column near to ‘Active console buffer’.
+[*] GuiMacro. Add description of ‘Progress 3’.
+[*] If ‘Copy on Left Button release’ was unchecked console was unexpectedly scrolled even if LButton was Up.
+[*] Fix admin consoles initialization.
+[*] Fix PVS warnings (from Michael Lukashov).
+
+
+2014.11.07
+[*] FileLine detector. Fix false detection of "index 621e2f9..d0abbf9 100644".
+[*] FileLine detector. Support git diffs style: "a/src/ConEmu.cpp" and "b/src/ConEmu.cpp".
+[*] Splits was not taken into account when resizing window by top/bottom edges.
+[*] Hotkey Win+Alt+T shows ‘Tasks’ settings page.
+[*] After palette change selected color option was ignored, was used ‘RRR GGG BBB’.
+[*] Fix search pane size/pos (theming).
+[*] Don't beep on Esc press in search pane.
+[*] Lets stop search by F10 keypress.
+[*] If search pane was empty clicking in the workspace was not stop searching.
+[*] Lets drag window by free place of the TabBar.
+[*] Fix Coverity warning (from Michael Lukashov).
+
+
+2014.11.06
+[*] When text is pasted immediately with RClick while selection is active - do not use Windows clipboard.
+[*] Search control position fix.
+[*] Rename tabs in the About dialog.
+[*] Switch cross-highlighting under mouse cursor with Apps+X (row highlighting - Apps+L).
+
+
+2014.11.05
+[*] Some splits were not displayed on startup (d592a05 regression).
+[*] ConEmuEnvironment: set ConEmuIsAdmin=ADMIN for those tabs/splits which were started elevated (UAC).
+[*] Add colored prompt to default cmd's tasks.
+[*] TabMenu was reorganized. Some menu items were moved into submenus.
+[*] Internal. Try to wait a little if GUI was not in time with RCon server initialization.
+
+
+2014.11.04a
+[*] Issue 1792: RBTray caused console crop (ff25dbc regression).
+[*] Use <Solarized> palette by default.
+
+
+2014.11.04
+[*] Issue 1790: Minimize/restore crops console size (ff25dbc regression).
+[*] Fix Coverity warnings and leaks (from Michael Lukashov).
+
+
+2014.11.03
+[*] Don't snap-jump by Win+Arrow if About dialog is at foreground.
+[*] Search for opened tab by full path instead of name only while Ctrl+Click on hyperlink (compiler errors).
+[*] Far Macro: Use ‘`elseif`’ keyword.
+[*] Far Macro: Use ‘`ACTL_SETCURRENTWINDOW`’ in ‘`ConEmu.Editor.lua`’.
+[*] Use solarized colors for StatusBar by default.
+[*] fix PVS warnings (from Michael Lukashov).
+[*] Issue 1784: Ctrl+Click did not recognize: C:\Work\Test.php:36
+[*] Change autoupdate source information to github.
+[*] Fix wrong per-monitor-dpi jumps.
+
+
+2014.11.01
+[*] Was failed with creating new xml config if empty xml file with BOM was exists.
+[*] Fix hung up after changing dpi with GuiMacro from command line.
+[*] Fix messed Far window number in the ‘ConEmu - tabs list’ (another Far api break).
+[*] Predefined palettes <Solarized> and <Solarized Light> were changed.
+[*] Init by default extended colors (16..31) with standard windows palette.
+[*] Support new parsing format in the colors edit fields ‘00BBGGRR’ (just for copying from "*.reg" files).
+[*] Increase max text length in colors edit fields (copy/paste purposes).
+[*] Add button ‘Default’ to the ‘Colors’ settings page. It resets colors 16..31 to standard windows palette.
+[*] Add radiobutton styles of color formats.
+[*] Minor RunQueue optimizations and other internal changes.
+
+
+2014.10.29
+[*] Show menu item hints in the StatusBar instead of tool tips.
+[*] Issue 1731: Fix assertion on cancel split window dialog (user/password confirmation).
+[*] Fix resize/minimize/restore lags and asserts.
+[*] Don't create new console if user cancels new console dialog (split window, user/password confirmation).
+[*] Between-monitor jump fixes (per-monitor dpi related).
+
+
+2014.10.28
+[*] Some listboxes in the Settings dialog was not filled properly. ‘EOL’ and ‘Back color’ were messed up.
+[*] Foreground color for selected text was ignored.
+[*] Show selection colors preview on the ‘Mark/Copy’ settings page.
+[*] Far's ‘User screen transparency’ was not working properly.
+[*] Selection status message was not dropped when ‘Find text’ dialog was closed.
+[*] Create search control in the Tab bar. It may be focused by old shortcut (‘Apps+F’ by default).
+    When search control is focused, one may open search menu by ‘Apps’ or RClick.
+    Control may be shown/hid with checkbox on the ‘Appearance’ settings page.
+[*] Issue 1777: Skip Far macro execution errors in some cases.
+[*] Internal fixes of wrong MF_SEPARATOR usage.
+[*] Force search scroll-buffer on search repeat (‘Freeze console’ must be on).
+
+
+2014.10.25
+[*] Issue 1321: Splitter calculation changed.
+[*] Try to move splitter with mouse dragging.
+[*] Consider monitor dpi in splitter size.
+[*] Issue 1747: Menu -> Close or kill -> Close all zombies.
+    This will close all dummy consoles, waiting for "Press Enter or Esc ..."
+    Hotkey is available and new GuiMacro Close(9[,1]).
+[*] Issue 1734: Try not to call FCTL_GETPANELDIRECTORY to get panel directories (ftp plugin issues).
+[*] Fix wrong StatusBar's first column width evaluation.
+[*] Due to useless Far3's window number let use 0-based window indexes as Far3build2798 and lower.
+[*] Adapt "`ConEmu.ShiftEnter.lua`" to broken Far windows behavior.
+[*] Add "%ConEmuExeDir%" before "%ConEmuBaseDir%" in "%PATH%".
+    So user may copy batch from "%ConEmuBaseDir%" to "%ConEmuExeDir%",
+    make desired changes and be sure it will not be overwrited
+    after new update. For example, move "csudo.cmd" from subfolder
+    with "ConEmuC.exe" to the folder with "ConEmu.exe" and change
+    the option in the beginning to: "set ConEmuSplit=NO".
+[*] Don't show "mp_RCon->m_GetDataPipe.Transact failed" errors, log them only.
+
+
+2014.10.22
+[*] Correct snap/tile ConEmu window to left/right/by-width/by-height.
+[*] Show snap/tile status on the Settings/Info page.
+[*] Rename maximize/tile hotkeys' descriptions.
+    Maximize height / width -> Snap .. to top/bottom / left/right edges ..
+    Tile ConEmu ... -> Snap ConEmu ...
+[*] Update Far3/lua headers to build 4040.
+[*] Let Plugin.SyncCall("4B675D80-1D4A-4EA9-8436-FDC23F2FC14B","...") returns result as string if succeeded.
+    lua:far.Message(Plugin.SyncCall("4B675D80-1D4A-4EA9-8436-FDC23F2FC14B","IsConEmu"))
+    lua:far.Message(Plugin.SyncCall("4B675D80-1D4A-4EA9-8436-FDC23F2FC14B","FindEditor(@\"C:\\autoexec.bat\")"))
+[*] Hyperlink detector false detect: full directory paths.
+[*] GuiMacro: New function `GetOption("<Name>")` return string representation of ConEmu option.
+    Example for "Internal CtrlTab" option check (Far 3 lua macro)
+    if Plugin.SyncCall("4B675D80-1D4A-4EA9-8436-FDC23F2FC14B","GetOption TabSelf") == "1" then
+      far.Message("ConEmu 'Internal CtrlTab' is ON")
+    end
+[*] Issue 1772: Scroll page up/down stopped to work.
+[*] Support another Far 3 API breaking change (tabs).
+
+
+2014.10.20
+[*] Try to hilight "folder\file" and do not hilight fakes and dirs.
+[*] Internal. Helper script NewClass.ps1 for creating in-project cpp/h pairs
+[*] Make possible to use "\e]0;text\a".
+[*] Let process "^a" in "ConEmuC -e <string>" (-> "\x07").
+[*] Issue 660: Switch "/AUTOATTACH" was not run asynchronously in some cases.
+[*] Attach: Switch "/GHWND=NEW" may create garbaged command line.
+[*] Attach: If "/AUTOATTACH" is specified, run server of same bitness as root/parent process.
+[*] Scroll. Changing scrolling style.
+    All scrollings in ConEmu are now processed virtually,
+    RealConsole is not touched anymore.
+[*] Add status bar column: Visible region lock.
+[*] Favor first and grip status columns to be fully visible.
+[*] Log tab activation errors (Far windows).
+
+
+2014.10.17
+[*] Far editor was opened at 1-st line instead of stored cursor position on Ctrl+LClick on filename without line number.
+[*] Issue 657: Eager+recent tab switching doesn't cycle all tabs.
+[*] Issue 1763: Assertion while starting something with redirection.
+[*] Issue 1764: Some files/hyperlinks detector issues.
+
+
+2014.10.16
+[*] Issue 1758: Support file/line format for php: "C:\..\test.php:28".
+[*] Hyperlinks: Check file existence before opening.
+[*] Hyperlinks: If clicked file was not found, try to find it in subfolders.
+[*] Hyperlinks: Try to make file path properly cased before opening (realconsole.cpp -> RealConsole.cpp).
+[*] Issue 1754: SystemMenu was opened by RClick on the title bar was not working on some XP machines.
+[*] Issue 166: Tab switch was not working from ‘ConEmu plugin -> T’.
+[*] Do not turn on ‘Long console output’ during "edit:<command" operations.
+[*] Tabs. SetTabs may fails for new Editor if it was opened from "edit:<command".
+[*] Mouse wheel logging.
+[*] Buffer was dropped (scrolling disabled) unexpectedly after "ConEmuC -c <command>" execution.
+[*] Just for fun, add "-fork"/"-async" switch (sort of trailing ‘&’ in bash).
+    For example, run from cmd.exe prompt and observe weird results :)
+    ConEmuC -async -c dir & ConEmuC -async -c dir
+
+
+2014.10.13
+[*] Issue 1753: Cursor goes out of screen while executing commands from "far" without "/w".
+[*] Issue 1754: Some changes with using WM_SYSCOMMAND.
+[*] More logging of SystemMenu processing.
+[*] If SystemMenu was opened by LClick on the title bar icon and closed by Esc promptly ConEmu window may be closed.
+[*] ConEmu.ShiftEnter.*: Check if plugin is ready to process "ConEmu:run:" prefix.
+[*] Do not request synchronous paint of the status bar from background threads.
+
+
+2014.10.12
+[*] Ensure that just installed (new config) ConEmu's window will not be larger that monitor working area.
+[*] While converting old config do not get data from LogFont if it was not created yet.
+[*] Use wiki page ‘Issues’ instead of ‘/issues/entry’ to avoid bad authorization redirection.
+[*] Fix Apps+PgDn description misprint.
+[*] Issue 1334: ConEmu plugin was not realized the attach is finished (call from plugin menu).
+[*] Tab initialization fix for "far.exe /e ...".
+[*] Ctrl+LClick was failed in some cases (Far editor, Lua macro).
+[*] Issue 338: Fix attach external Far Manager console from plugin (not recommended though).
+[*] Update application manifests to Windows 10.
+[*] Attach list (Win+G) was failed sometimes with showing correct bitness of processes.
+[*] Show new console size in the status bar during resizing with mouse.
+[*] Issue 1568: Try to hold cursor position (bottom visible line) in the bottom after resizing.
+[*] Restrict minimal GUI height to ({4,2} x {splits count}).
+[*] Macro: ConEmu.CtrlO.*: the Far default behavior (CtrlO) mapped to CtrlAltO because CtrlShiftO is used for splitting.
+[*] Issue 1752: ConEmuTh: add ‘Turn off’ to the plugin menu. Macro option: Plugin.Call(ConEmuTh,256).
+[*] ConEmu.Editor.lua: Fix auto switch to Editor Tab macro.
+[*] ConEmu.ShiftEnter.lua: Fix ShiftEnter (run command in new tab) macro.
+[*] Fix some EmergencyShow multi-process issues.
+[*] Issue 1745: DPI scaling issues with font's combo boxes.
+[*] Many internal changes.
+
+
+2014.10.04
+[*] Auto switch hovered tabs while dragging files from/to Far panel.
+[*] Don't try to copy files from "C:\1\" to "C:\1\" (same src and dst folders).
+[*] Issue 1740: D&D was not started from Far 1.75.
+[*] When creating default tasks, show WinSDK version in the tab label.
+[*] Autocreate VS (vcvarsall.bat) tasks for new configs.
+
+
+2014.10.02
+[*] Preparing for Windows 10.
+
+
+2014.10.01
+[*] ConEmuPlugin was rewritten using classes (Far versioning).
+[*] Don't activate Far Panels while Ctrl+LClick in Far Editor window.
+[*] Issue 1717: Auto save/restore opened tabs renamed labels.
+[*] AnsiEscapeCodes: 'ESC [ 90..97 m' high intensity foreground color, 'ESC [ 100..107' high intensity background color.
+[*] Issue 1715: 'New window'+'Run as administrator' was created non-elevated window.
+[*] Don't autoshow scrollbar on mouse hover while ConEmu is not in foreground.
+[*] Far plugin. F11 -> 'ConEmu' -> 'Show all panels list'. Press enter to 'print' selected path into current Far window.
+    Use macro (ConEmu.PanelsList.lua) to simplify menu call.
+    Plugin.Call("4b675d80-1d4a-4ea9-8436-fdc23f2fc14b",11)
+[*] Issue 1590: (workaround) Parameter 'StartCreateDelay' may be changed via settings (xml/reg). DWORD 10..10000, default 100.
+[*] Debug. Some improvement in showing CP and console modes.
+[*] Debug. Verbose WM_DEADCHAR warning.
+
+
+2014.09.23
+[*] Debug purpose switch: ConEmu.exe -LoadRegistry.
+[*] Support automatic find/loading of ".ConEmu.xml" (dot prefixed) config file.
+[*] Wrong dpi was used if starting on second monitor (9df4391 regression).
+
+
+2014.09.22
+[!] Internal: CSettings decomposition.
+[+] GuiMacro may be used for changing Checkbox/Radio ConEmu's options.
+    SetOption("Check",<ID>,<Value>)
+      ID: numeric identifier of checkbox (ConEmu.rc, resource.h)
+      Value: 0 - off, 1 - on, 2 - third state
+    Example, turn scrollbar on: ConEmuC -GuiMacro SetOption Check 2488 1
+[*] Issue 1703: 'file.ext:line:' in hyperlink detector error.
+[*] File[:line:] hyperlink was not opened in Far editor sometimes (one more 'Desktop' drawback).
+[*] It was impossible to resize splitters in some configurations.
+    For example, area 3 was not available for resize:
+    +-----+-----+-----+
+    ¦  1  ¦     ¦  4  ¦
+    +-----+  3  +-----+
+    ¦  2  ¦     ¦  5  ¦
+    +-----+-----+-----+
+[*] Minor xml formatting fix (new line after last MSZ value).
+[*] Fix false xml modified timestamps updates for Tasks and Palettes.
+[*] Option ‘KeyBar RClick’ was not working with "Far /w".
+[*] Wrong DPI was used if creating small window attached to the monitor edge.
+[*] github#19: Don't post Enter/Space KeyUp events to the console input buffer.
+
+
+2014.09.14
+[*] Wrong macro was sended to Far 3 (Lua) on hyperlink click if file was already opened.
+[*] Fix drop files to Far command line. Add menu items to press ‘Enter’ after goto/edit/view.
+[*] Fix wrong ‘sleep/speed’ written to the log.
+[*] Avoid numerous writing of equal lines to log (console size).
+[*] Internal changes.
+[*] Issue 1704: GuiMacro. User may change option "FarGotoEditorPath" on the fly.
+    Multiple Highlight editors are available now. Just call GuiMacro SetOption
+    function with preferred editor command line. Few examples with ConEmuC
+      conemuc -guimacro setoption FarGotoEditorPath @"far.exe /e%1:%2 ""%3"""
+      conemuc -guimacro setoption FarGotoEditorPath @"#notepad ""%3"""
+[*] Issue 1711: Cut start/end quotes from double-quoted commands.
+
+
+2014.09.09
+[*] Verbose tab activation error information.
+[*] Wrong hotkey was *displayed* on Tasks page.
+[*] Debug log was not disabled on Settings window closing.
+[*] ConEmu frame was not set to inactive state with ChildGui in the active tab.
+[*] Log current session state changes (/log switch, Issue 1689 related).
+[*] Wrong dpi value may be used in some cases (dialog sizes, etc.)
+[*] If ChildGui was in focus, cross clicking was not closed all ConEmu tabs but only active ChildGui.
+[*] Return focus to ChildGui on ‘Create new console’ dialog cancelling and tab switching.
+[*] Do not do quake-flicker on Settings dialog opening.
+
+
+2014.09.08
+[*] Issue 1690: Give more weight to "/dir" ConEmu.exe switch than the same from Task parameter.
+[*] Issue 1703: Force CD refresh before starting hyperlink (editor).
+[*] Spare "cmd.exe" was appeared in the process root in some cases.
+
+
+2014.09.05
+[*] Issue 1684: Long startup of documents from network drives.
+[*] Issue 1703: Prepare FarPlugin to send both panel CD's to GUI.
+[*] When exporting settings suggest default for ConEmu.xml folder.
+[*] Fix indents when creating new xml file.
+[*] Do not update modified (timestamp) if xml was not really changed during config save.
+
+
+2014.09.03
+[*] Move Background image settings to separate page.
+[*] In some rare cases background was not drawn.
+[*] Background was not updated after some changes of ‘Placement’ field.
+[*] Add dummy (yet) chord hotkey controls to settings.
+[*] Explain LDrag/RDrag modifiers in hotkey list, show [Disabled] if it LDrag/RDrag is unchecked.
+[*] Issue 1657: Treat Far space-visualizations as space symbols.
+[*] Issue 1691: Make simple filenames Ctrl+LClick'able (open file in the editor).
+[*] Reveal ConEmuC switches in release (/ErrorLevel and /Result).
+[*] Issue 1696: GuiMacro. Attach([PID[,Alternative]]) allows attaching external console/ChildGui by PID.
+[*] Keyboard hooks were not disabled when ChildGui has focus and user switching to another app.
+[*] [Re]store tab working directories using option ‘Auto save/restore opened tabs’. Read more about ShellWorkDir.
+[*] Issue 1643: gh#10: Try do not change ‘modified’ timestamp in xml if nothing was changed (Auto save window size and position on exit).
+
+
+2014.08.19
+[*] Issue 1666: Fix black squares in RDP sessions (non true-color display modes actually).
+[*] Issue 1688: Crash while updating Task bar jump list (6307574 regression).
+[*] Add ‘Remote session’ and ‘ScreenDC BITSPIXEL’ detection to Log.
+
+
+2014.08.18
+[*] New status bar columns are available: Zoom and DPI. Zoom is clickable.
+[*] Let statusbar columns Focus/Foreground show process information.
+[*] Ctrl+WheelClick reset font size to 100, same as GuiMacro Zoom(100).
+[*] Make all ConEmu's dialogs per-monitor dpi aware.
+[*] Fix console recreation and termination.
+    If user cancel the UAC dialog during console [re]creation
+    ConEmu fails to close the window by cross-click.
+[*] Implement ‘%CD%’ maintaining in the RCon.
+    * Automatic detection of ‘%CD%’ in "cmd.exe" or "tcc.exe";
+    * Ability to inform ConEmu GUI about shell ‘CD’ using
+      ANSI (\e]9;9;"CD"\e\\) or "ConEmuC -StoreCWD [dir]";
+    * Display *CD* in the tab title using ‘%d’ tab template;
+    * Reuse *CD* in the Restart and Create new console dialogs;
+    * At last you may use "*%CD%*" variable with Shell macro function
+      in the `Dir` parameter. Example, start new 'cmd' session:
+      Shell("", "cmd", "", "%CD%")
+[*] Issue 1680: Use ‘%CD%’ within hyperlink detector, warn if file not found.
+
+
+2014.08.15
+[*] Issue 1660: Support "/NoSingle", "/Quake", "/NoQuake" switches in Task parameters.
+    They used while starting new Task from existing ConEmu instance.
+[*] Quake window can't be hidden by taskbar button click.
+[*] Some internal changes.
+
+
+2014.08.14
+[*] Issue 1672: Attach to a console window clears its window title.
+[*] DefTerm. Use switch "/ROOTEXE" internally to let ConEmuC know the name of root executable.
+[*] More tab switch fixed for Far Manager 4040 (‘Desktop’ is now has ‘0’ index).
+[*] New status column for debugging purposes - ‘Keyboard hooks’.
+[*] Advanced logging of monitor dpi.
+[*] Wrong values was written to log in ‘Loaded pos’.
+
+
+2014.08.12
+[%] Issue 1669: Internal tab switching was broken from Far 4040.
+[%] Issue 1670: Powershell + PSReadLine makes progress get stuck.
+
+
+2014.08.11
+[*] Issue 1667: Drag&Drop was broken from Far 4040.
+[*] Issue 1666: Windows XP: Black squares on the toolbar (3fb706a regression)
+[*] Issue 1334: New buffer scrolling hotkeys.
+    * by half-screen - Apps+PgUp/PgDn
+    * to the top/bottom - Apps+Home/End
+    * to the cursor row - Apps+Backspace
+[+] GuiMacro: Scroll(<Type>,<Direction>,<Count=1>)
+    Do buffer scrolling actions
+       Type: 0; Value: ‘-1’=Up, ‘+1’=Down
+       Type: 1; Value: ‘-1’=PgUp, ‘+1’=PgDown
+       Type: 2; Value: ‘-1’=HalfPgUp, ‘+1’=HalfPgDown
+       Type: 3; Value: ‘-1’=Top, ‘+1’=Bottom
+       Type: 4; No arguments; Go to cursor line
+
+2014.08.10
+[!] With courtesy of Certum, ConEmu's binaries now are signed as ‘Open Source Developer, ConEmu-Maximus5’.
+[!] Per-monitor dpi awareness implemented (Windows 8.1).
+    The checkbox ‘Admit monitor dpi with font size’ is turned on by default.
+    It will affect the height of Tabs, Status and Main console fonts.
+[!] Ability to ‘Treat font height as device units’ implemented.
+    The checkbox is turned OFF by default for existing configs,
+    but it is turned ON by default for new configs and after config reset.
+[*] Releases builded via VisualStudio projects was not dpi-aware.
+[*] Issue 1653: In some rare cases ConEmu.exe was locking shell working directory.
+[*] New ConEmu.exe switches: -quake, -quakeauto (autohide on focus lose) and -noquake.
+[*] Checkbox ‘New window’ was ignored if dialog was started from tasks menu with Shift+Click.
+[*] Ensure that console started in the ‘New window’ will not be Quake-moded.
+[*] Ctrl+Wheel changes the zoom value but not a font height from the ‘Main’ settings page.
+
+
+2014.07.23
+[%] Issue 1608: DefTerm. /config parameter registered for startup was cleared after OS restart.
+[*] DefTerm. Started debugging session of Win32 app from VS was ignored DefTerm options.
+[*] DefTerm. Support flickerless start of Win32 console app debugging session (same bitness as devenv).
+[*] Make Win+S hotkey for ‘Duplicate root’ by default.
+[*] Ensure cascaded window will not pass outside of monitor working area.
+[*] Allow ‘Duplicate root’ even if injects were disabled.
+[*] Do not leave ‘hunging’ tab if duplicating was failed.
+[%] Tab title was not changed sometimes during command execution from Far panels.
+[*] Due to many reports crashdump message was changed (aka MicrosoftBugs, ConEmuHk).
+[*] Immediate reaction on "ConEmuFakeDT" changing in batch files (7a8e61f regression).
+[*] Issue 1379: Use ‘Appearance -> Animation’ in ‘normal’ mode too.
+[*] Many internal changes.
 
 
 2014.07.07
