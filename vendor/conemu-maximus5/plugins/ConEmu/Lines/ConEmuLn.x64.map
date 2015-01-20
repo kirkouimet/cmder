@@ -1,21 +1,21 @@
  ConEmuLn.x64
 
- Timestamp is 54861ae9 (Tue Dec 09 00:40:57 2014)
+ Timestamp is 54be187d (Tue Jan 20 11:57:33 2015)
 
  Preferred load address is 0000000180000000
 
  Start         Length     Name                   Class
- 0001:00000000 0000439eH .text                   CODE
+ 0001:00000000 000043a0H .text                   CODE
  0001:000043a0 0000005eH .text$00                CODE
  0002:00000000 00000128H .idata$5                DATA
  0002:00000130 000003f1H .rdata                  DATA
- 0002:00000528 0000022cH .xdata                  DATA
- 0002:00000754 00000064H .idata$2                DATA
- 0002:000007b8 00000014H .idata$3                DATA
+ 0002:00000528 00000230H .xdata                  DATA
+ 0002:00000758 00000064H .idata$2                DATA
+ 0002:000007bc 00000014H .idata$3                DATA
  0002:000007d0 00000128H .idata$4                DATA
  0002:000008f8 00000226H .idata$6                DATA
  0002:00000b20 0000018fH .edata                  DATA
- 0003:00000000 00000128H .data                   DATA
+ 0003:00000000 00000130H .data                   DATA
  0003:00000130 000007c0H .bss                    DATA
  0004:00000000 00000348H .pdata                  DATA
  0005:00000000 00000058H .rsrc$01                DATA
@@ -91,8 +91,8 @@
  0001:0000438c       VerQueryValueW             000000018000538c f   version:VERSION.dll
  0001:00004392       GetFileVersionInfoW        0000000180005392 f   version:VERSION.dll
  0001:00004398       GetFileVersionInfoSizeW    0000000180005398 f   version:VERSION.dll
- 0001:000043b0       _alloca_probe              00000001800053b0     chkstk.obj
- 0001:000043b0       __chkstk                   00000001800053b0 f   chkstk.obj
+ 0001:000043b0       _alloca_probe              00000001800053b0     LIBCMT:chkstk.obj
+ 0001:000043b0       __chkstk                   00000001800053b0 f   LIBCMT:chkstk.obj
  0002:00000000       __imp_RegQueryValueExW     0000000180006000     advapi32:ADVAPI32.dll
  0002:00000008       __imp_RegOpenKeyExW        0000000180006008     advapi32:ADVAPI32.dll
  0002:00000010       __imp_RegSetValueExW       0000000180006010     advapi32:ADVAPI32.dll
@@ -153,12 +153,12 @@
  0002:000004e8       ??_C@_1CE@PCHJHFGJ@?$AAC?$AAo?$AAn?$AAE?$AAm?$AAu?$AA?5?$AAU?$AAn?$AAd?$AAe?$AAr?$AAl?$AAi?$AAn?$AAe?$AAs?$AA?$AA@ 00000001800064e8     ConEmuLn2800.obj
  0002:0000050c       ??_C@_04JCFDBOEJ@?$CF06X?$AA@ 000000018000650c     ConEmuLnA.obj
  0002:00000518       ??_C@_08KOICIHPP@0xXXXXXX?$AA@ 0000000180006518     ConEmuLnA.obj
- 0002:00000754       __IMPORT_DESCRIPTOR_KERNEL32 0000000180006754     kernel32:KERNEL32.dll
- 0002:00000768       __IMPORT_DESCRIPTOR_USER32 0000000180006768     user32:USER32.dll
- 0002:0000077c       __IMPORT_DESCRIPTOR_GDI32  000000018000677c     gdi32:GDI32.dll
- 0002:00000790       __IMPORT_DESCRIPTOR_ADVAPI32 0000000180006790     advapi32:ADVAPI32.dll
- 0002:000007a4       __IMPORT_DESCRIPTOR_VERSION 00000001800067a4     version:VERSION.dll
- 0002:000007b8       __NULL_IMPORT_DESCRIPTOR   00000001800067b8     kernel32:KERNEL32.dll
+ 0002:00000758       __IMPORT_DESCRIPTOR_KERNEL32 0000000180006758     kernel32:KERNEL32.dll
+ 0002:0000076c       __IMPORT_DESCRIPTOR_USER32 000000018000676c     user32:USER32.dll
+ 0002:00000780       __IMPORT_DESCRIPTOR_GDI32  0000000180006780     gdi32:GDI32.dll
+ 0002:00000794       __IMPORT_DESCRIPTOR_ADVAPI32 0000000180006794     advapi32:ADVAPI32.dll
+ 0002:000007a8       __IMPORT_DESCRIPTOR_VERSION 00000001800067a8     version:VERSION.dll
+ 0002:000007bc       __NULL_IMPORT_DESCRIPTOR   00000001800067bc     kernel32:KERNEL32.dll
  0003:00000000       ?gcrLinesColor@@3KA        0000000180007000     ConEmuLn.obj
  0003:00000004       ?gcrHilightPlugBack@@3KA   0000000180007004     ConEmuLn.obj
  0003:00000010       ?gSettings@@3PAUConEmuLnSettings@@A 0000000180007010     ConEmuLn.obj
