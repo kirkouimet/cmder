@@ -12,6 +12,165 @@ Votes and awards (vote for ConEmu, if you please)
 http://code.google.com/p/conemu-maximus5/wiki/Awards
 
 
+2015.3.2
+[*] Show current tab icon as Windows 7 taskbar overlay icon.
+[*] Visible region lock (scrolling) was unexpectedly dropped sometimes.
+[*] Add all installed (and found) Far Manager installations while creating default tasks.
+[*] Issue 1920: Fix visual defect in window padding area during Quake style slide down animation.
+[*] Allow Quake window resizing and moving.
+[*] Fixed resize issues after Quake slide up/down.
+[*] Add to the TabMenu items ‘Split to right’ and ‘Split to bottom’.
+[*] Untick ‘Auto minimize to TSA’ when turning Quake mode off.
+[*] ToolBar buttons min/max/close were not properly shown/hidden on some options changing.
+[*] gh#57: Cannot restore prevoisly opened tabs if there was a task marked as ‘Default for new console’.
+[*] Consoles were not resized sometimes after Win+Left/Right (snap window to left/right monitor edge).
+[*] After restoring snapped window the snapped state was dropped (window was put to ‘Normal’ position).
+
+
+2015.2.24
+[*] One more correction of keyboard input processing.
+[*] Option ‘Treat font height as device units’ was not saved in new config.
+[*] Pseudographics font was incorrectly sized on some dpi-s.
+[*] HotKeys. Implemented ‘Kill all but shell’ function.
+    Default hotkey Win+Shift+Delete for new configs.
+	Also it is accessible from TabMenu or SystemMenu and
+    GuiMacro: terminate all but shell process Close(10), no confirm Close(10,1)
+    Note. If there is a shell only - confirm user to kill the shell.
+[*] Don't do "ConEmuCpCvt" conversion if some chars were failed.
+[*] Ability to change ‘processor affinity’ and ‘process priority’ for all running processes.
+    The function affects all running processes in the current console (tab/pane).
+    Available from TabMenu and SystemMenu item ‘Affinity/priority...’,
+    HotKey and GuiMacro AffinityPriority([Affinity,Priority]).
+    Unless you specify ‘Affinity’ or ‘Priority’ in GuiMacro function
+    ConEmu will show dialog with affinity/priority options.
+[*] Issue 1911: Do not scroll out of found position after clicking in the console to allow select text there.
+[*] Option ‘Skip click on activation’ was not working sometimes.
+[*] Allow physical scroll down of the console until the cursor remains visible.
+[*] Internal. Fix wrong logging message for WA_ACTIVE
+[*] During excessing keyboard activity console contents was updated slowly.
+[*] Switch "/bypass" creates processes with normal priority.
+[*] gh#59: Message ‘Failed to start task in user mode, timeout’ was appeared after updating.
+[*] gh#56: Do not use RVAL_REF with GCC
+[*] LogFiles were not created for far.exe sometimes.
+[*] Do not flush logs after each line to avoid lags.
+
+2015.2.24a
+[*] Issue 1917: Avoid ‘Win+Shift+Delete is not unique’ error.
+
+
+2015.2.18
+[*] Issue 1817: Fix dropped or garbled keypresses sent from AHK.
+[*] Don't suggest by default xml storage on Windows 2000.
+
+
+2015.2.16
+[*] GuiMacro. Issue 1411, gh#58. WindowPosSize("<X>","<Y>","<W>","<H>")
+    It changes window pos and size, same as ‘Apply’ button in the ‘Size & Pos’ page of the Settings dialog.
+[*] GuiMacro. Simplify passing string arguments
+    For example, the following commands will be equal now:
+    ConEmuC -GuiMacro WindowPosSize "0" "0" "800px" "600px"
+    ConEmuC -GuiMacro WindowPosSize 0 0 800px 600px
+
+
+2015.2.15
+[*] Add menu item ‘Online &Help’ to the SystemMenu.
+[*] After AppDistinct settings change console was not redrawn properly sometimes.
+[*] Sometimes true colors were not used while executing smth like "edit:<git log".
+[*] Outscreen regions were not cleared by "cls" executed in "Far /w" prompt.
+[*] Issue 1881: Newly catched admin consoles were unexpectedly scrolled to the bottom (DefTerm).
+[*] Catched RealConsole (DefTerm) was hidden even if ‘Show real console’ was ticked.
+[*] Use bitmap resource for ‘Search’ icon.
+
+
+2015.2.9
+[*] Issue 1897: Tear off started "ConEmu.exe" from "taskeng.exe" (switch /demote).
+    Let process created from task sheduler runs indefinitely.
+[*] Auto save window size & pos is turned on by default.
+[*] Add test batch "utf-8-test.cmd" (check console unicode capabilities).
+[*] Suggest ConEmu.xml storage for new configurations by default.
+[*] Issue 1870: Rename dialog was shown out of screen if tabs were on bottom.
+
+
+2015.2.6
+[*] CP hack: Use ConEmuCpCvt to force output CP conversion.
+    If some command uses wrong CP while converting ANSI to Unicode
+    (the example may be perl.exe from "git add -p")
+    set variable to correct its output. Use asterisk for all apps.
+    This hack affects ONLY WriteConsoleW function calls.
+    Format:
+      <exename>:<badcp>:<goodcp>[;<exename>:<badcp>:<goodcp>[...]]
+    Example:
+      set ConEmuCpCvt=perl.exe:1252:1251;*:850:866;
+[*] CP hack: Use ConEmuDefaultCp to change output CP if you don't want to use chcp.
+    If you can't use "chcp <codepage>" to change whole console CP output,
+    you may change it using environment variable ConEmuDefaultCp.
+    It will affect only WriteFile and WriteConsoleA functions.
+    So, if you need to run several apps in one console simultaneously...
+      set ConEmuDefaultCp=1251
+      ConEmuC -fork -c App1.exe
+      set ConEmuDefaultCp=866
+      ConEmuC -fork -c App2.exe
+      set ConEmuDefaultCp=
+[*] Add information about "-Async", "-Fork", "-Download" switches.
+[*] Switch '-noquake' implies '-nosingle'.
+[*] Use self-implemented UnExpandEnvStrings while creating default tasks.
+[*] TaskBar jump list was created without directly specified xml configuration file.
+[*] Button ‘Save’ instead of ‘Start’ was shown if bad startup Task was detected.
+[*] The menu item ‘Clear history...’ was not working (the one in the `[+]` drop-down menu).
+[*] Sometimes ‘Console script are not supported here’ error appeared after running a task from NewConsole dialog.
+[*] Tasks may be organized with folders. Delimit task name from folder name with "::".
+    For example, type "Shells::PowerShell" instead of "PowerShell", and so on.
+    Only one level of folders is allowed. No need to reorder tasks of one folder
+    continuously, folders are filled by name. Generally this was implemented for
+    drop-down `[+]` menu.
+[*] Create default tasks with folders (Shells, Bash, SDK, and so on).
+[*] Find task by name with or without folder part (Startup page).
+[*] Button 'Add default tasks' will not create task duplicates (checking by task name).
+[*] Allow switch '/reuse' in task parameters (alias for '/single' yet).
+
+
+2015.2.3
+[*] Issue 1886: Change text cursor position with ‘LeftClick’ was not working when PSReadLine was loaded in your $profile. Look at RevokeMouseInput.ps1.
+[*] github#20: ‘Ctrl-Left’ and ‘Ctrl-Right’ was not working in Vim/xterm.
+[*] Create new console confirmation now if disabled by default.
+    So ‘Win+W’ or ‘LClick’ on the `[+]` button creates new default task.
+    The default task may be choosed in the ‘Tasks’ settings page.
+    New console dialog (command, directory, as admin, and so on)
+    may be shown with:
+    * ‘Win+Shift+W’;
+    * ‘Shift+LClick’, ‘RClick’ or ‘LongTap’ on the `[+]`;
+    * ‘New console dialog...’ menu item (down arrow about `[+]`).
+[*] Window and tab closing confirmations now are disabled by default.
+    But if there are more than a two user processes running in the console -
+    close confirmation may be shown. So, there are thee checkboxes now:
+    * Confirm window closing (unchecked);
+    * Confirm tab closing (unchecked);
+    * When running process was detected (checked).
+
+
+2015.1.28
+[*] Add missed GuiMacro GetOption description.
+[*] Debug. Show ConEmu build number in the _ASSERT dialog
+[*] Issue 1878: GuiMacro. Add ability to get some environment from ConEmu.
+    GetInfo("PID"[,"HWND"[,...]])
+     - Returns values of some ConEmu environment variables
+       GetInfo("PID") returns %ConEmuPID% and so on
+       It's processed in GUI so the result may differs from RealConsole
+[*] Search field sometimes disappeared after playing with toolbar visibility.
+[*] Add small gap between search field and right window frame edge if toolbar is hidden.
+[*] HighlightAndGoto: Add examples with 'cmd.exe /c ...'.
+
+    cmd.exe /c "echo Executing "%3" & "%3""
+
+    After Ctrl+Click on highlighted (underlined) file
+    ConEmu will start cmd.exe in new tab and highlighted file will be executed.
+    Documents will be opened using associated application.
+    Add "-new_console:n" suffix to suppress "Press Enter or Esc to close console".
+[*] Issue 1883: Search field activation hotkey was not working if toolbar buttons were hidden.
+[*] AnsiEscapeCodes: Change behavior on wrong ST terminator of OSC detected (allowed 'ESC \' or 'BEL').
+[*] Issue 1865: Deadlocks were happened sometimes, PipeServer termination sequence was changed.
+
+
 2015.1.19a
 [*] Issue 1876: Revert msvcrt.dll linkage.
 
